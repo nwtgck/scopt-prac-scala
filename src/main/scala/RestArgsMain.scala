@@ -1,6 +1,7 @@
 
-object SimpleMain {
-  case class MyOptions(times: Int=1, fpath: String="default-string")
+object RestArgsMain {
+
+  case class MyOptions(times: Int=1, fpath: String="default-string", rest: List[String]=List.empty)
 
   def main(args: Array[String]): Unit = {
 
@@ -12,6 +13,10 @@ object SimpleMain {
       opt[String]('p', "fpath") action {(fpath, myOptions) =>
         myOptions.copy(fpath=fpath)
       } text ("this is description of fpath")
+
+      arg[String]("<fpath>...").unbounded().optional().action{(x, c) =>
+        c.copy(rest=c.rest :+ x)
+      }
     }
 
     val res = parser.parse(args, MyOptions())
