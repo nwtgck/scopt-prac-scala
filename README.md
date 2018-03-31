@@ -18,3 +18,18 @@ sbt "runMain SimpleMain --times=2525 --fpath=./test"
 ```bash
 sbt "runMain RestArgsMain --times=2525 --fpath=./test hogehoge foo piyo"
 ```
+
+### SubcommandMain
+
+
+#### Sub1
+
+```bash
+sbt "runMain SubcommandMain sub1 --times=23 --fpath=./dummy-file"
+```
+
+#### Sub2
+
+```bash
+sbt "runMain SubcommandMain sub2 --name=Adam apple orange tomato"
+```
