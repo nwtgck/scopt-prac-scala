@@ -41,5 +41,25 @@ object SubcommandMain {
 
     val res = parser.parse(args, MyConfig())
     println(res)
+
+
+    // Pattern Match
+
+    res match {
+      case Some(myConfig) =>
+
+        myConfig.subConfig match {
+          case NoSubConfig =>
+            println("Unexpected error! (NoSubConfig)")
+          case SubConfig1(times, fpath) =>
+            println(s"sub1: times: ${times}, fpath: ${fpath}")
+          case SubConfig2(name, rest) =>
+            println(s"sub2: name: ${name}, rest: ${rest}")
+        }
+
+      case None =>
+        println("None!")
+    }
+
   }
 }
