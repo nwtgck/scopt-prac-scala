@@ -14,5 +14,9 @@ cache:
     - $HOME/.sbt/boot/
 
 script:
+  # NOTE: This is just working-test
   - sbt "runMain SimpleMain --times=2525 --fpath=./test"
   - sbt "runMain RestArgsMain --times=2525 --fpath=./test hogehoge foo piyo"
+
+  - sbt "runMain SubcommandMain sub1 --times=23 --fpath=./dummy-file"
+  - sbt "runMain SubcommandMain sub2 --name=Adam apple orange tomato"
